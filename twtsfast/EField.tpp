@@ -316,13 +316,12 @@ namespace picongpu
                                   * sinPhi_3
                               - complex_T(0, 8) * sinPhi2_4
                                   * (k * x2 - (k * y2 - float_T(4.0) * k * (cspeed * t - z) * z) * sinPhi))
-                       - complex_T(0, 4) * sinPhi2_4
-                           * (complex_T(0, -4) * k * y * (cspeed * t - z) * rho0 * cosPhi * sinPhi_2
-                              + complex_T(0, 2) * sinPhi_3
-                                  * ((k * y2 - float_T(2.0) * k * (cspeed * t - z) * z) * rho0
-                                     - complex_T(0, 1) * k * z * x2)
-                              - float_T(2.0) * z * (k * y2 - float_T(2.0) * k * (cspeed * t - z) * z) * sinPhi_4
-                              + y2 * k * (cspeed * t - z) * sin2Phi * sin2Phi))
+                       + sinPhi2_4
+                           * (- float_T(16.0) * k * y * (cspeed * t - z) * rho0 * cosPhi * sinPhi_2
+                              + float_T(8.0) * (k * y2 - float_T(2.0) * k * (cspeed * t - z) * z)
+                                  * (rho0 * sinPhi_3 + complex_T(0, 1) * z * sinPhi_4)
+                              - complex_T(0, 8) * k * z * x2 * sinPhi_3
+                              - complex_T(0, 4) * y2 * k * (cspeed * t - z) * sin2Phi * sin2Phi))
                     / (helpVar2 * helpVar1);
 
                 complex_T const helpVar4 = cspeed * om0 * tauG2
