@@ -304,38 +304,36 @@ namespace picongpu
 
                 complex_T const helpVar0 = phase_shift - complex_T(0, 1) * space_norm;
 
-                complex_T const helpVar1 = space_norm * sinPhi_4
-                    - complex_T(0, 8) * sinPhi2_4 * sinPhi * (y * cosPhi + z * sinPhi);
+                complex_T const helpVar1
+                    = space_norm * sinPhi_4 - complex_T(0, 8) * (sinPhi2_4 * sinPhi * (y * cosPhi + z * sinPhi));
 
                 complex_T const complex_shift = complex_T(0, 1) * rho0 - z * sinPhi;
 
                 complex_T const helpVar2 = complex_T(0, 1) * rho0 - y * cosPhi - z * sinPhi;
 
                 complex_T const helpVar3 = complex_T(0, float_T(-0.5)) * cscPhi
-                    * (complex_T(0, -8) * phase_shift * y * sinPhi2_2 * sinPhi_4
-                           * complex_shift
-                       + sinPhi_4 * sinPhi
-                           * (space_norm * k * x2
-                              - complex_T(0, 2) * phase_shift * helpVar0 * complex_shift)
-                       + y * cosPhi * sinPhi_2
-                           * (complex_T(0, 8) * phase_shift * y * sinPhi2_2 * sinPhi_2
-                              + complex_T(0, 2) * phase_shift * helpVar0 * sinPhi_3
-                              - complex_T(0, 8) * sinPhi2_4
-                                  * (k * x2 - (k * y2 - float_T(4.0) * phase_shift * z) * sinPhi))
+                    * (complex_T(0, -8) * complex_shift * (phase_shift * y * sinPhi2_2 * sinPhi_4)
+                       + (sinPhi_4 * sinPhi)
+                           * (space_norm * k * x2 - (complex_T(0, 2) * complex_shift * helpVar0) * phase_shift)
+                       + (y * cosPhi * sinPhi_2)
+                           * (complex_T(0, 8) * (phase_shift * y * sinPhi2_2 * sinPhi_2)
+                              + (complex_T(0, 2) * helpVar0) * (phase_shift * sinPhi_3)
+                              - complex_T(0, 8)
+                                  * (sinPhi2_4 * (k * x2 - (k * y2 - float_T(4.0) * phase_shift * z) * sinPhi)))
                        + sinPhi2_4
-                           * (- float_T(16.0) * y * phase_shift * rho0 * cosPhi * sinPhi_2
+                           * (-float_T(16.0) * y * phase_shift * rho0 * cosPhi * sinPhi_2
                               + float_T(8.0) * (k * y2 - float_T(2.0) * phase_shift * z)
-                                  * (rho0 * sinPhi_3 + complex_T(0, 1) * z * sinPhi_4)
-                              - complex_T(0, 8) * k * z * x2 * sinPhi_3
-                              - complex_T(0, 4) * y2 * phase_shift * sin2Phi * sin2Phi))
+                                  * (rho0 * sinPhi_3 + complex_T(0, 1) * (z * sinPhi_4))
+                              - complex_T(0, 8) * (k * z * x2 * sinPhi_3)
+                              - complex_T(0, 4) * (y2 * phase_shift * sin2Phi * sin2Phi)))
                     / (helpVar2 * helpVar1);
 
                 complex_T const helpVar4 = space_norm
-                    - complex_T(0, 8) * y * math::tan(float_T(PI / 2.0) - phiT) * cscPhi * cscPhi * sinPhi2_4
-                    - complex_T(0, 2) * z * tanPhi2_2;
+                    - complex_T(0, 8) * (y * math::tan(float_T(PI / 2.0) - phiT) * cscPhi * cscPhi * sinPhi2_4)
+                    - complex_T(0, 2) * (z * tanPhi2_2);
 
                 complex_T const result
-                    = (math::exp(helpVar3) * math::sqrt(space_norm * rho0 / helpVar2)) / math::sqrt(helpVar4);
+                    = (math::exp(helpVar3) * math::sqrt((space_norm * rho0) / (helpVar2 * helpVar4)));
 
                 return result.get_real();
             }
