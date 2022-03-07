@@ -304,9 +304,9 @@ namespace picongpu
                 complex_T const helpVar2 = complex_T(0, 1) * rho0 - y * cosPhi - z * sinPhi;
 
                 complex_T const helpVar3 = complex_T(0, float_T(-0.5)) * cscPhi
-                    * (complex_T(0, -8) * om0 / cspeed * y * (cspeed * t - z) * sinPhi2_2 * sinPhi_4
+                    * (complex_T(0, -8) * k * y * (cspeed * t - z) * sinPhi2_2 * sinPhi_4
                            * (complex_T(0, 1) * rho0 - z * sinPhi)
-                       - om0 / cspeed * sinPhi_4 * sinPhi
+                       - k * sinPhi_4 * sinPhi
                            * (-float_T(2.0) * z2 * rho0
                               - cspeed * cspeed
                                   * (k * tauG2 * x2 + float_T(2.0) * t * (t - complex_T(0, 1) * om0 * tauG2) * rho0)
@@ -314,20 +314,20 @@ namespace picongpu
                               - complex_T(0, 2) * (cspeed * t - z) * (cspeed * (t - complex_T(0, 1) * om0 * tauG2) - z)
                                   * z * sinPhi)
                        + float_T(2.0) * y * cosPhi * sinPhi_2
-                           * (complex_T(0, 4) * om0 / cspeed * y * (cspeed * t - z) * sinPhi2_2 * sinPhi_2
-                              + om0 / cspeed * (cspeed * t - z)
+                           * (complex_T(0, 4) * k * y * (cspeed * t - z) * sinPhi2_2 * sinPhi_2
+                              + k * (cspeed * t - z)
                                   * (complex_T(0, 1) * cspeed * t + cspeed * om0 * tauG2 - complex_T(0, 1) * z)
                                   * sinPhi_3
                               - complex_T(0, 4) * sinPhi2_4
-                                  * (k * x2 - om0 / cspeed * (y2 - float_T(4.0) * (cspeed * t - z) * z) * sinPhi))
+                                  * (k * x2 - k * (y2 - float_T(4.0) * (cspeed * t - z) * z) * sinPhi))
                        - complex_T(0, 4) * sinPhi2_4
-                           * (complex_T(0, -4) * om0 / cspeed * y * (cspeed * t - z) * rho0 * cosPhi * sinPhi_2
+                           * (complex_T(0, -4) * k * y * (cspeed * t - z) * rho0 * cosPhi * sinPhi_2
                               + complex_T(0, 2)
-                                  * (om0 / cspeed * (y2 + float_T(2.0) * z2) * rho0
+                                  * (k * (y2 + float_T(2.0) * z2) * rho0
                                      - z * (complex_T(0, 1) * k * x2 + float_T(2.0) * om0 * t * rho0))
                                   * sinPhi_3
-                              - float_T(2.0) * om0 / cspeed * z * (y2 - float_T(2.0) * (cspeed * t - z) * z) * sinPhi_4
-                              + om0 / cspeed * y2 * (cspeed * t - z) * sin2Phi * sin2Phi))
+                              - float_T(2.0) * k * z * (y2 - float_T(2.0) * (cspeed * t - z) * z) * sinPhi_4
+                              + k * y2 * (cspeed * t - z) * sin2Phi * sin2Phi))
                     / (helpVar2 * helpVar1);
 
                 complex_T const helpVar4 = cspeed * om0 * tauG2
