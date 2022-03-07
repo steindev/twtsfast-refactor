@@ -317,7 +317,7 @@ namespace picongpu
                               - complex_T(0, 8) * sinPhi2_4
                                   * (k * x2 - (k * y2 - float_T(4.0) * k * (cspeed * t - z) * z) * sinPhi))
                        + sinPhi2_4
-                           * (- float_T(16.0) * k * y * (cspeed * t - z) * rho0 * cosPhi * sinPhi_2
+                           * (- float_T(16.0) * y * k * (cspeed * t - z) * rho0 * cosPhi * sinPhi_2
                               + float_T(8.0) * (k * y2 - float_T(2.0) * k * (cspeed * t - z) * z)
                                   * (rho0 * sinPhi_3 + complex_T(0, 1) * z * sinPhi_4)
                               - complex_T(0, 8) * k * z * x2 * sinPhi_3
