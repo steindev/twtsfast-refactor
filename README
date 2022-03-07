@@ -1,0 +1,6 @@
+# twtsfast-refactor
+
+For the refactor of the twtsfast implementation in PIConGPU, this repo contains all the refactoring steps as single commits in order to be trackable.
+
+Original implementation as in picongpu 0.7.0-dev, commit 8d3539321ee10f37773b7ade11711d202a3e4e16
+
